@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "bike_rentals",
-  "productName": "bike_rentals",
+  "productName": "Top View Sightseeing - Bike Rentals",
   "description": "Top View Sightseeing - Practical Test - Matthew Moray",
   "version": "0.0.0",
   "license": "MIT",
@@ -17,8 +17,15 @@
     "email": "matthewmoray@gmail.com"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.15",
     "normalize.css": "^7.0.0",
     "object-assign": "^4.1.1",
+    "popper.js": "^1.16.0",
     "promise-polyfill": "^6.0.2"
   },
   "devDependencies": {
