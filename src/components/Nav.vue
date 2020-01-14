@@ -1,13 +1,13 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container">
             <button class="btn btn-link navbar-brand" @click="keepShopping">
                 Top View Sightseeing <font-awesome-icon icon="bicycle" /> 
             </button>
-            <button aria-controls="navbar_toggle" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar_toggle" data-toggle="collapse" type="button">
+            <button aria-controls="navbar_toggle" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar_toggle" data-toggle="collapse" type="button" v-if="!submit">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbar_toggle">
+            <div class="collapse navbar-collapse" id="navbar_toggle" v-if="!submit">
                 <ul class="ml-auto navbar-nav">
                     <li class="nav-item">
                         <div class="dropdown">
@@ -56,7 +56,8 @@
         props: [
             'cart',
             'keepShopping',
-            'setCheckout'
+            'setCheckout',
+            'submit'
         ]
     }
 </script>

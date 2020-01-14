@@ -35,6 +35,11 @@
                         </p>
                     </div>
                     <div class="d-flex">
+                        <div class="mr-auto my-auto" v-if="canSubmit && hasAccessories && hasAddOns">
+                            <button class="btn btn-outline-dark btn-sm" @click="keepShopping" type="button">
+                                Keep Shopping
+                            </button>
+                        </div>
                         <div class="ml-auto my-auto">
                             <h5 class="mb-0">
                                 <strong>Total:</strong>
@@ -42,7 +47,7 @@
                             </h5>
                         </div>
                         <div class="ml-4">
-                            <button class="btn btn-outline-dark btn-sm" type="button" :disabled="!canSubmit || isError">
+                            <button class="btn btn-outline-dark btn-sm" @click="setSubmit" type="button" :disabled="!canSubmit || isError">
                                 Submit
                             </button>
                         </div>
@@ -116,7 +121,8 @@
 
         props: [
             'items',
-            'keepShopping'
+            'keepShopping',
+            'setSubmit'
         ]
     }
 </script>

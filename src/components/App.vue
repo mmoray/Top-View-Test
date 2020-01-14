@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Nav :cart="cart" :keepShopping="keepShopping" :setCheckout="setCheckout"></Nav>
+    <Nav :cart="cart" :keepShopping="keepShopping" :setCheckout="setCheckout" :submit="submit"></Nav>
     <div class="container">
-      <div v-if="!checkout">
+      <div v-if="!checkout && !submit">
         <ProductList class="my-4" :addToCart="addToCart" :products="getBikes">
           Bikes
         </ProductList>
@@ -13,10 +13,31 @@
           Add Ons
         </ProductList>
       </div>
-      <div v-else>
+      <div v-else-if="checkout">
         <PaymentInformation class="my-4"></PaymentInformation>
-        <ItemList class="my-4" :items="cart" :keepShopping="keepShopping">
+        <ItemList class="my-4" :items="cart" :keepShopping="keepShopping" :setSubmit="setSubmit">
         </ItemList>
+      </div>
+      <div v-else-if="submit">
+        <div class="card my-4">
+          <div class="card-header">
+            <h2>
+              Conclusion
+            </h2>
+          </div>
+          <div class="card-body">
+            <p class="mb-0">
+              Thank you for the opportunity to interview and take the practical assessment for Top View Sightseeing! I hope you have enjoyed this demo and I look forward to hearing back from you!
+            </p>  
+          </div>
+          <div class="card-footer d-flex">
+            <div class="ml-auto">
+              <button class="btn btn-outline-dark btn-sm" @click="reset" type="button">
+                Reset Demo
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -103,7 +124,8 @@
             image: "http://via.placeholder.com/250x250?text=Insurance",
             product_type: "addon"
           }
-        ]
+        ],
+        submit: false
       };
     },
 
@@ -128,11 +150,20 @@
         this.checkout = false;
       },
 
+      reset() {
+        this.cart = [];
+        this.keepShopping();
+        this.submit = false;
+      },
+
       setCheckout() {
         this.checkout = true;
-      }
-    },
+      },
 
-    name: 'app'
+      setSubmit() {
+        this.keepShopping();
+        this.submit = true;
+      }
+    }
   }
 </script>

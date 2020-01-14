@@ -3,11 +3,6 @@
         <img class="card-img-top" :alt="product.name" :src="product.image" />
         <div class="card-body">
             <h3 class="card-title">{{ product.name }}</h3>
-            <!--<div class="card-text">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-            </div>-->
             <form>
                 <div class="alert alert-danger alert-dismissible" role="alert" v-if="isError">
                     <p class="alert-heading mb-0">
@@ -107,6 +102,7 @@
 
             validateForm() {
                 this.error = null;
+                this.previousQuantity = '';
                 if (this.quantity == '' || this.quantity <= 0) {
                     if (this.quantity == '') {
                         this.error = "The quantity is required!";
